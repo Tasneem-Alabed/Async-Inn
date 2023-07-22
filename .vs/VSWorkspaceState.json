@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebApplication1",
+    "\\WebApplication1\\WebApplication1",
+    "\\WebApplication1\\WebApplication1\\Data"
   ],
-  "SelectedNode": "\\C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel",
+  "SelectedNode": "\\WebApplication1\\WebApplication1\\Data\\HotelDbContest.cs",
   "PreviewInSolutionExplorer": false
 }

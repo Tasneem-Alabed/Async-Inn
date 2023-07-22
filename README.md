@@ -24,3 +24,20 @@ Sunday, July 16, 2023
 
 ### The Layout Enum => 
 + It has the nickname of the room that depends on it . It contains several layouts of the rooms.
+
+## Hotel System 
+this app present the data of hotels that stor in database 
+we have 5 tabels eachone has Id  and there are a relation between table that was
+explain in the explanation part 
+
+## to use this app
+
+1- you should install packeges 
+
+- Microsoft.VisualStudio.Web.CodeGeneration.Design
+- Microsoft.VisualStudio.Web.CodeGeneration
+- Microsoft.EntityFrameworkCore.SqlServer
+- Microsoft.EntityFrameworkCore.Tools
+ then when the app run it will open in the browser so 
+after the link add /api/{table name}
+
