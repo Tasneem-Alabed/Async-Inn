@@ -24,7 +24,7 @@ namespace WebApplication1.Data
                     Srate = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+                   
                 },
                 new Hotel()
                 {
@@ -35,7 +35,7 @@ namespace WebApplication1.Data
                     Srate = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+                   
                 }, new Hotel()
                 {
                     Id = 3,
@@ -45,22 +45,29 @@ namespace WebApplication1.Data
                     Srate = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+                   
                 }
 
 
                 );
 
             modelBuilder.Entity<Room>().HasData(
-                new Room() { ID =1 , Name ="p" , Layout=9 , Rooms=8 , Amenities = 88}, 
-                new Room() { ID = 2, Name = "p", Layout = 9, Rooms = 8, Amenities = 88 },
-                new Room() { ID = 3, Name = "p", Layout = 9, Rooms = 8, Amenities = 88 }
+                new Room() { ID =1 , Name ="p" , Layout=9 , Rooms=8 }, 
+                new Room() { ID = 2, Name = "p", Layout = 9, Rooms = 8 },
+                new Room() { ID = 3, Name = "p", Layout = 9, Rooms = 8 }
                 );
             modelBuilder.Entity<Amenities>().HasData(
-                new Amenities() {Id =1 , Name = "do" , RoomAmenities=9 }, 
-                new Amenities() { Id = 2, Name = "do", RoomAmenities = 9 }, 
-                new Amenities() { Id = 3, Name = "do", RoomAmenities = 9 }
+                new Amenities() {Id =1 , Name = "do"  }, 
+                new Amenities() { Id = 2, Name = "do" }, 
+                new Amenities() { Id = 3, Name = "do"}
                 );
+
+            modelBuilder.Entity<RoomAmenities>().HasKey(
+               roomamanites => new { roomamanites.RoomId, roomamanites.Id }
+               );
+            modelBuilder.Entity<HotelRoom>().HasKey(
+               roomamanites => new { roomamanites.Id, roomamanites.RoomNumber }
+               );
 
         }
         public DbSet<Hotel> Hotels { get; set; }

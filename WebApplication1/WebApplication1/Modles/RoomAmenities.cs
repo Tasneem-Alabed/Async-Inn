@@ -6,8 +6,7 @@
 
         public int RoomId { get; set; }
 
-        public int Amenities { get; set; }
-
-        public int Room { get; set; }
+        public Room Room { get; set; }
+        public Amenities Ameneties { get; set; }
     }
 }

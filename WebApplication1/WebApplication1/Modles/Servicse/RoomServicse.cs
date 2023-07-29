@@ -46,10 +46,22 @@ namespace WebApplication1.Modles.Servicse
             Temproom.Name = room.Name;
             Temproom.Layout = room.Layout;
             Temproom.Rooms = room.Rooms;
-            Temproom.Amenities = room.Amenities;
             _context.Entry(room).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return room;
+        }
+        public async Task<RoomAmenities> RemoveAmentityFromRoom(int roomId, int amenityId)
+        {
+            var roomameneties = await _context.RoomAmenities.Where(x => x.RoomId == roomId && x.Id == amenityId).FirstOrDefaultAsync();
+            _context.Entry(roomameneties).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+
+            return roomameneties;
+        }
+
+        public Task<RoomAmenities> AddAmenityToRoom(int roomId, int amenityId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

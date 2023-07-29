@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Modles;
+using WebApplication1.Modles.Interfse;
 
 namespace WebApplication1.Controller
 {
@@ -15,6 +16,13 @@ namespace WebApplication1.Controller
     public class RoomsController : ControllerBase
     {
         private readonly HotelDbContest _context;
+
+        private readonly IRoom rooms;
+
+        public RoomsController(IRoom room)
+        {
+            rooms = room;
+        }
 
         public RoomsController(HotelDbContest context)
         {
@@ -115,7 +123,19 @@ namespace WebApplication1.Controller
 
             return NoContent();
         }
+        [HttpPost]
+        [Route("{roomId}/Amenity/{amenityId}")]
+        public async Task<RoomAmenities> PostRoomaded(int roomId, int amenityId)
+        {
+            return await rooms.AddAmenityToRoom(roomId, amenityId);
+        }
 
+        [HttpDelete]
+        [Route("{roomId}/Amenity/{amenityId}")]
+        public async Task<RoomAmenities> DeleteRoomaded(int roomId, int amenityId)
+        {
+            return await rooms.RemoveAmentityFromRoom(roomId, amenityId);
+        }
         private bool RoomExists(int id)
         {
             return (_context.Room?.Any(e => e.ID == id)).GetValueOrDefault();

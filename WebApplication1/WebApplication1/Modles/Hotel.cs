@@ -13,6 +13,6 @@
 
         public string Phone { get; set; }
 
-        public int HotelRoom { get; set; }
+        public List<HotelRoom> HotelRooms { get; set; }
     }
 }
