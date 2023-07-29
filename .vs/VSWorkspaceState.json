@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WebApplication1",
-    "\\WebApplication1\\WebApplication1",
-    "\\WebApplication1\\WebApplication1\\Data"
+    "\\WebApplication1\\WebApplication1\\Controller",
+    "\\WebApplication1\\WebApplication1\\Data",
+    "\\WebApplication1\\WebApplication1\\Properties"
   ],
-  "SelectedNode": "\\WebApplication1\\WebApplication1\\Data\\HotelDbContest.cs",
   "PreviewInSolutionExplorer": false
 }

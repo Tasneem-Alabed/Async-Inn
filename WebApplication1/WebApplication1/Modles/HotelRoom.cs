@@ -13,8 +13,7 @@ namespace WebApplication1.Modles
 
         public bool PitFriendly { get; set; }
 
-        public int Hotel { get; set; }
-
-        public int Room { get; set; }
+        public Hotel Hotel { get; set; }
+        public Room Room { get; set; }
     }
 }

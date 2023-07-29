@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Gos7VKoe0xH6NpdjOE/F3Dkern5mNIO5PjBjOun71yGVqL6ictCoq9+0XxGKoE39LKQuHdT2cVuaQw7Nebt9tw==",
+  "dgSpecHash": "smooQofv2ITadaqtkp8NTM/yqXMuOncpw/bivbV+h3rSi1sdULi3BOxkf1As/xHJTTR+DvWpLdQ7AkljfZ/odA==",
   "success": true,
   "projectFilePath": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\tsnee\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\tsnee\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\tsnee\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\tsnee\\.nuget\\packages\\imv.external.postgres.server\\10.14.1\\imv.external.postgres.server.10.14.1.nupkg.sha512",
     "C:\\Users\\tsnee\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\tsnee\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\tsnee\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",

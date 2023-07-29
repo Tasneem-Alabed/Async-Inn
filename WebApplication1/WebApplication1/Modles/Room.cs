@@ -10,7 +10,7 @@
 
         public int Rooms { get; set; }
 
-        public int Amenities { get; set; }
+        public List<RoomAmenities> RoomAmeneties { get; set; }
 
     }
 }

@@ -42,7 +42,7 @@ namespace WebApplication1.Modles.Servicse
         {
             var amenty = await GetAmenitieId(id);
             amenty.Name = updateAmenites.Name;
-            amenty.RoomAmenities = updateAmenites.RoomAmenities;
+            amenty.RoomAmeneties = updateAmenites.RoomAmeneties;
             _context.Entry(amenty).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return amenty;

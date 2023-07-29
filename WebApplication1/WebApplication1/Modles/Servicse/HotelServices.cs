@@ -50,7 +50,7 @@ namespace WebApplication1.Modles.Servicse
             Temphotel.Srate = hotel.Srate;
             Temphotel.Country = hotel.Country;
             Temphotel.Phone = hotel.Phone;
-            Temphotel.HotelRoom = hotel.HotelRoom;
+            Temphotel.HotelRooms = hotel.HotelRooms;
 
 
 
