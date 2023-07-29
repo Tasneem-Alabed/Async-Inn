@@ -55,7 +55,7 @@ namespace WebApplication1.Controller
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRoomAmenities(int id, RoomAmenities roomAmenities)
         {
-            if (id != roomAmenities.Id)
+            if (id != roomAmenities.AmenityId)
             {
                 return BadRequest();
             }
@@ -93,7 +93,7 @@ namespace WebApplication1.Controller
             _context.RoomAmenities.Add(roomAmenities);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRoomAmenities", new { id = roomAmenities.Id }, roomAmenities);
+            return CreatedAtAction("GetRoomAmenities", new { id = roomAmenities.AmenityId }, roomAmenities);
         }
 
         // DELETE: api/RoomAmenities/5
@@ -118,7 +118,7 @@ namespace WebApplication1.Controller
 
         private bool RoomAmenitiesExists(int id)
         {
-            return (_context.RoomAmenities?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.RoomAmenities?.Any(e => e.AmenityId == id)).GetValueOrDefault();
         }
     }
 }

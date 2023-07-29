@@ -33,9 +33,6 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoomAmenities")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Amenities");
@@ -44,30 +41,27 @@ namespace WebApplication1.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "do",
-                            RoomAmenities = 9
+                            Name = "do"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "do",
-                            RoomAmenities = 9
+                            Name = "do"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "do",
-                            RoomAmenities = 9
+                            Name = "do"
                         });
                 });
 
             modelBuilder.Entity("WebApplication1.Modles.Hotel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -77,9 +71,6 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("HotelRoom")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -88,81 +79,71 @@ namespace WebApplication1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Srate")
+                    b.Property<string>("State")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetAddres")
+                    b.Property<string>("StreetAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Hotels");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            ID = 1,
                             City = "Amman",
                             Country = "oo",
-                            HotelRoom = 900,
                             Name = "Five",
                             Phone = "000000000",
-                            Srate = "do",
-                            StreetAddres = "Moon"
+                            State = "do",
+                            StreetAddress = "Moon"
                         },
                         new
                         {
-                            Id = 2,
+                            ID = 2,
                             City = "Amman",
                             Country = "oo",
-                            HotelRoom = 900,
                             Name = "Five",
                             Phone = "000000000",
-                            Srate = "do",
-                            StreetAddres = "Moon"
+                            State = "do",
+                            StreetAddress = "Moon"
                         },
                         new
                         {
-                            Id = 3,
+                            ID = 3,
                             City = "Amman",
                             Country = "oo",
-                            HotelRoom = 900,
                             Name = "Five",
                             Phone = "000000000",
-                            Srate = "do",
-                            StreetAddres = "Moon"
+                            State = "do",
+                            StreetAddress = "Moon"
                         });
                 });
 
             modelBuilder.Entity("WebApplication1.Modles.HotelRoom", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Hotel")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("PitFriendly")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("Rate")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Room")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomId")
+                    b.Property<int>("HotelID")
                         .HasColumnType("int");
 
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<bool>("IsPetFriendly")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Rate")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("RoomID")
+                        .HasColumnType("int");
+
+                    b.HasKey("HotelID", "RoomNumber");
+
+                    b.HasIndex("RoomID");
 
                     b.ToTable("HotelRoom");
                 });
@@ -175,18 +156,12 @@ namespace WebApplication1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("Amenities")
-                        .HasColumnType("int");
-
                     b.Property<int>("Layout")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rooms")
-                        .HasColumnType("int");
 
                     b.HasKey("ID");
 
@@ -195,50 +170,92 @@ namespace WebApplication1.Migrations
                     b.HasData(
                         new
                         {
-                            ID = 1,
-                            Amenities = 88,
-                            Layout = 9,
-                            Name = "p",
-                            Rooms = 8
-                        },
-                        new
-                        {
-                            ID = 2,
-                            Amenities = 88,
-                            Layout = 9,
-                            Name = "p",
-                            Rooms = 8
-                        },
-                        new
-                        {
                             ID = 3,
-                            Amenities = 88,
                             Layout = 9,
-                            Name = "p",
-                            Rooms = 8
+                            Name = "p"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Layout = 9,
+                            Name = "p"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Layout = 9,
+                            Name = "p"
                         });
                 });
 
             modelBuilder.Entity("WebApplication1.Modles.RoomAmenities", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<int>("AmenityId")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Amenities")
+                    b.Property<int>("RoomID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Room")
-                        .HasColumnType("int");
+                    b.HasKey("AmenityId", "RoomID");
 
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasIndex("RoomID");
 
                     b.ToTable("RoomAmenities");
+                });
+
+            modelBuilder.Entity("WebApplication1.Modles.HotelRoom", b =>
+                {
+                    b.HasOne("WebApplication1.Modles.Hotel", "Hotel")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("HotelID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication1.Modles.Room", "Room")
+                        .WithMany("HotelRooms")
+                        .HasForeignKey("RoomID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Hotel");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("WebApplication1.Modles.RoomAmenities", b =>
+                {
+                    b.HasOne("WebApplication1.Modles.Amenities", "Amenity")
+                        .WithMany("Rooms")
+                        .HasForeignKey("AmenityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebApplication1.Modles.Room", "Room")
+                        .WithMany("RoomAmenities")
+                        .HasForeignKey("RoomID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Amenity");
+
+                    b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("WebApplication1.Modles.Amenities", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
+            modelBuilder.Entity("WebApplication1.Modles.Hotel", b =>
+                {
+                    b.Navigation("HotelRooms");
+                });
+
+            modelBuilder.Entity("WebApplication1.Modles.Room", b =>
+                {
+                    b.Navigation("HotelRooms");
+
+                    b.Navigation("RoomAmenities");
                 });
 #pragma warning restore 612, 618
         }

@@ -47,5 +47,22 @@ three services (HotelServices , RoomServicse , AmenitiesServicse)
 It acts as a repository for related data operations (hotel/room/amenities)
 The IHotel IRoom IAmenity interfaces serves as a contract that any class representing a (hotel/room/amenity) repository .
 
+ do
+### add new routing 
 
+create relation between table 
+
+
+## Routes
+
+<br></br>
+1-  /api/Hotels/{hotelId}/Rooms this route to get all rooms for hotel
+
+2-  /api/Hotels/{hotelId}/Rooms this rout to add rome to the hotel
+
+3-  /api/Hotels/{hotelId}/Rooms/{roomNumber} this route to get all room information for a room
+
+4-  /api/Hotels/{hotelId}/Rooms/{roomNumber}  this route to update the information for rooms
+
+5-  /api/Hotels/{hotelId}/Rooms/{roomNumber} this route to delete room from hotel    
 

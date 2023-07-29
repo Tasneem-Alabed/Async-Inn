@@ -9,60 +9,75 @@ namespace WebApplication1.Data
         public HotelDbContest(DbContextOptions options) : base(options)
         {
 
-            
 
-    }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
             modelBuilder.Entity<Hotel>().HasData(
                 new Hotel()
                 {
-                    Id = 1,
+                    ID = 1,
                     Name = "Five",
-                    StreetAddres = "Moon",
+                    StreetAddress = "Moon",
                     City = "Amman",
-                    Srate = "do",
+                    State = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+
                 },
                 new Hotel()
                 {
-                    Id = 2,
+                    ID = 2,
                     Name = "Five",
-                    StreetAddres = "Moon",
+                    StreetAddress = "Moon",
                     City = "Amman",
-                    Srate = "do",
+                    State = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+
                 }, new Hotel()
                 {
-                    Id = 3,
+                    ID = 3,
                     Name = "Five",
-                    StreetAddres = "Moon",
+                    StreetAddress = "Moon",
                     City = "Amman",
-                    Srate = "do",
+                    State = "do",
                     Country = "oo",
                     Phone = "000000000",
-                    HotelRoom = 900
+
                 }
 
 
                 );
 
             modelBuilder.Entity<Room>().HasData(
-                new Room() { ID =1 , Name ="p" , Layout=9 , Rooms=8 , Amenities = 88}, 
-                new Room() { ID = 2, Name = "p", Layout = 9, Rooms = 8, Amenities = 88 },
-                new Room() { ID = 3, Name = "p", Layout = 9, Rooms = 8, Amenities = 88 }
+
+                new Room() { ID = 3, Name = "p", Layout = 9 },
+                 new Room() { ID = 4, Name = "p", Layout = 9 },
+                new Room() { ID = 5, Name = "p", Layout = 9 }
+
                 );
             modelBuilder.Entity<Amenities>().HasData(
-                new Amenities() {Id =1 , Name = "do" , RoomAmenities=9 }, 
-                new Amenities() { Id = 2, Name = "do", RoomAmenities = 9 }, 
-                new Amenities() { Id = 3, Name = "do", RoomAmenities = 9 }
+                new Amenities() { Id = 1, Name = "do" },
+                new Amenities() { Id = 2, Name = "do" },
+                new Amenities() { Id = 3, Name = "do" }
                 );
 
+            modelBuilder.Entity<RoomAmenities>().HasKey(
+             roomamanites => new { roomamanites.AmenityId, roomamanites.RoomID }
+    );
+            modelBuilder.Entity<HotelRoom>().HasKey(
+               roomamanites => new { roomamanites.HotelID, roomamanites.RoomNumber }
+               );
+
+
+
         }
+
+
         public DbSet<Hotel> Hotels { get; set; }
 
         public DbSet<Room> Room { get; set; }
@@ -73,5 +88,5 @@ namespace WebApplication1.Data
 
         public DbSet<RoomAmenities> RoomAmenities { get; set; }
     }
-    }
+}
 

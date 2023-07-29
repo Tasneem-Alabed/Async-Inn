@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
+    "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel2\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
+    "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel2\\WebApplication1\\WebApplication1\\WebApplication1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectUniqueName": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "projectName": "WebApplication1",
-        "projectPath": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
+        "projectPath": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel2\\WebApplication1\\WebApplication1\\WebApplication1.csproj",
         "packagesPath": "C:\\Users\\tsnee\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel\\WebApplication1\\WebApplication1\\obj\\",
+        "outputPath": "C:\\Users\\tsnee\\OneDrive\\Desktop\\Hotel2\\WebApplication1\\WebApplication1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tsnee\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Imv.External.Postgres.Server": {
+              "target": "Package",
+              "version": "[10.14.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.9, )"

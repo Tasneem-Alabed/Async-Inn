@@ -6,46 +6,83 @@ namespace WebApplication1.Modles.Servicse
 {
     public class AmenitiesServicse : IAmenities
     {
-        private readonly HotelDbContest _context;
+        private readonly HotelDbContest _amenity;
 
-        public AmenitiesServicse(HotelDbContest context)
+        public AmenitiesServicse(HotelDbContest amenity)
         {
-            _context = context;
-        }
-        public async Task<Amenities> Create(Amenities aminity)
-        {
-            _context.Amenities.Add(aminity);
-            await _context.SaveChangesAsync();
-            return aminity;
+            _amenity = amenity;
         }
 
-        public async Task<Amenities> Delete(int id)
+        public async Task<Amenities> Create(Amenities amenity)
         {
-            var aminty = await GetAmenitieId(id);
-            _context.Entry(aminty).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
-            return aminty;
+            _amenity.Amenities.Add(amenity);
+
+            await _amenity.SaveChangesAsync();
+
+            return amenity;
+
         }
 
-        public async Task<Amenities> GetAmenitieId(int id)
+        public async Task DeleteAmenity(int id)
         {
-            var amiety = await _context.Amenities.FindAsync(id);
-            return amiety;
+            Amenities amenity = await GetAmenityById(id);
+
+            _amenity.Entry<Amenities>(amenity).State = EntityState.Deleted;
+
+            await _amenity.SaveChangesAsync();
         }
 
         public async Task<List<Amenities>> GetAmenities()
         {
-            return await _context.Amenities.ToListAsync();
+
+            var amenities = await _amenity.Amenities
+                .Include(a => a.Rooms)
+                    .ThenInclude(ra => ra.Room)
+                .ToListAsync();
+
+            var result = amenities.Select(a => new Amenities
+            {
+                Id = a.Id,
+                Name = a.Name,
+
+                Rooms = a.Rooms.Select(ra => new RoomAmenities
+                {
+                    RoomID = ra.RoomID,
+                    AmenityId = ra.AmenityId,
+                    Room = new Room
+                    {
+                        ID = ra.Room.ID,
+                        Name = ra.Room.Name,
+                        Layout = ra.Room.Layout
+
+                    }
+                }).ToList()
+            }).ToList();
+
+            return result;
+
+
+
         }
 
-        public async Task<Amenities> Update(int id, Amenities updateAmenites)
+        public async Task<Amenities> GetAmenityById(int id)
         {
-            var amenty = await GetAmenitieId(id);
-            amenty.Name = updateAmenites.Name;
-            amenty.RoomAmenities = updateAmenites.RoomAmenities;
-            _context.Entry(amenty).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return amenty;
+            Amenities? amenity = await _amenity.Amenities.FindAsync(id);
+            return amenity;
+        }
+
+        public async Task<Amenities> UpdateAmenity(int id, Amenities amenity)
+        {
+            var amenityValue = await _amenity.Amenities.FindAsync(id);
+
+            if (amenityValue != null)
+            {
+                amenityValue.Name = amenity.Name;
+
+                await _amenity.SaveChangesAsync();
+            }
+
+            return amenityValue;
         }
     }
 }

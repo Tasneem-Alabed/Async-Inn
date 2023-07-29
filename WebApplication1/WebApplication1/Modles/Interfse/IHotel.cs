@@ -3,9 +3,13 @@
     public interface IHotel
     {
         Task<Hotel> Create(Hotel hotel);
+
         Task<List<Hotel>> GetHotels();
-        Task<Hotel> GetHotelId(int id);
-        Task<Hotel> Update(int id, Hotel hotel);
-        Task<Hotel> Delete(int id);
+
+        Task<Hotel> GetHotelById(int id);
+
+        Task<Hotel> UpdateHotel(int id, Hotel hotel);
+
+        Task DeleteHotel(int id);
     }
 }

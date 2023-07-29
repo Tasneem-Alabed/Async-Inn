@@ -1,20 +1,24 @@
 ﻿using Microsoft.Identity.Client;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Modles
 {
     public class HotelRoom
     {
-        public int Id { get; set; }
-        public int RoomNumber { get; set;}
+        public int HotelID { get; set; }
 
-        public int RoomId { get; set; }
+        public int RoomID { get; set; }
+
+        public int RoomNumber { get; set; }
 
         public decimal Rate { get; set; }
 
-        public bool PitFriendly { get; set; }
+        public bool IsPetFriendly { get; set; }
 
-        public int Hotel { get; set; }
+        [ForeignKey("RoomID")]
+        public Room? Room { get; set; }
 
-        public int Room { get; set; }
+        [ForeignKey("HotelID")]
+        public Hotel? Hotel { get; set; }
     }
 }
