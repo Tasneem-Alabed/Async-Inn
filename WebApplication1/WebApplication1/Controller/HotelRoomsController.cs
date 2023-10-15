@@ -23,6 +23,7 @@ namespace WebApplication1.Controller
 
         // GET: api/HotelRooms
         [HttpGet]
+        [Route ("/api/Hotels/{hotelId}/Rooms")]
         public async Task<ActionResult<IEnumerable<HotelRoom>>> GetHotelRoom()
         {
           if (_context.HotelRoom == null)
@@ -53,6 +54,7 @@ namespace WebApplication1.Controller
         // PUT: api/HotelRooms/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Route("/api/Hotels/{hotelId}/Rooms/{roomNumber}")]
         public async Task<IActionResult> PutHotelRoom(int id, HotelRoom hotelRoom)
         {
             if (id != hotelRoom.Id)
@@ -84,6 +86,7 @@ namespace WebApplication1.Controller
         // POST: api/HotelRooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("/api/Hotels/{hotelId}/Rooms")]
         public async Task<ActionResult<HotelRoom>> PostHotelRoom(HotelRoom hotelRoom)
         {
           if (_context.HotelRoom == null)
@@ -98,6 +101,7 @@ namespace WebApplication1.Controller
 
         // DELETE: api/HotelRooms/5
         [HttpDelete("{id}")]
+        [Route("/api/Hotels/{hotelId}/Rooms/{roomNumber}")]
         public async Task<IActionResult> DeleteHotelRoom(int id)
         {
             if (_context.HotelRoom == null)

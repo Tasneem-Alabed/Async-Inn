@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Modles;
+using WebApplication1.Modles.Interfse;
 
 namespace WebApplication1.Controller
 {
@@ -15,9 +16,10 @@ namespace WebApplication1.Controller
     public class HotelsController : ControllerBase
     {
         private readonly HotelDbContest _context;
-
-        public HotelsController(HotelDbContest context)
+        private readonly IHotel _hotel;
+        public HotelsController(HotelDbContest context  , IHotel hotel)
         {
+            _hotel = hotel;
             _context = context;
         }
 

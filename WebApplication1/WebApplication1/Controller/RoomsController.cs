@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
 using WebApplication1.Modles;
 using WebApplication1.Modles.Interfse;
+using WebApplication1.Modles.Servicse;
 
 namespace WebApplication1.Controller
 {
@@ -19,25 +20,24 @@ namespace WebApplication1.Controller
 
         private readonly IRoom rooms;
 
-        public RoomsController(IRoom room)
-        {
-            rooms = room;
-        }
-
-        public RoomsController(HotelDbContest context)
+        public RoomsController(HotelDbContest context ,IRoom room)
         {
             _context = context;
+            rooms = room;
+
         }
 
         // GET: api/Rooms
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Room>>> GetRoom()
         {
-          if (_context.Room == null)
-          {
-              return NotFound();
-          }
-            return await _context.Room.ToListAsync();
+            var rooms = await _context.Room.ToListAsync();
+            if (rooms == null || rooms.Count == 0)
+            {
+                return NotFound();
+            }
+            
+            return rooms;
         }
 
         // GET: api/Rooms/5
@@ -92,6 +92,7 @@ namespace WebApplication1.Controller
         // POST: api/Rooms
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Route("{roomId}/Amenity/{amenityId}")]
         public async Task<ActionResult<Room>> PostRoom(Room room)
         {
           if (_context.Room == null)
@@ -105,7 +106,8 @@ namespace WebApplication1.Controller
         }
 
         // DELETE: api/Rooms/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("{roomId}/Amenity/{amenityId}")]
         public async Task<IActionResult> DeleteRoom(int id)
         {
             if (_context.Room == null)

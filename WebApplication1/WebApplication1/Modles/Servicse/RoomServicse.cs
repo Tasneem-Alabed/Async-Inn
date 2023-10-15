@@ -37,7 +37,38 @@ namespace WebApplication1.Modles.Servicse
 
         public async Task<List<Room>> GetRooms()
         {
-            return await _context.Room.ToListAsync();
+            var rooms = await _context.Room
+                .Include(r => r.RoomAmeneties)
+                    .ThenInclude(ra => ra.Ameneties)
+                .Include(hotelRooms => hotelRooms.Rooms)
+                
+                .ToListAsync();
+
+
+            var result = rooms.Select(r => new Room
+            {
+                ID = r.ID,
+                Name = r.Name,
+                Layout = r.Layout,
+                RoomAmeneties = r.RoomAmeneties.Select(ra => new RoomAmenities
+                {
+                    RoomId = ra.RoomId,
+                    Id = ra.Id,
+                    Ameneties = new Amenities
+                    {
+                        Id = ra.Ameneties.Id,
+                        Name = ra.Ameneties.Name,
+                    },
+                    Room = null
+
+                }).ToList(),
+               
+                    
+
+
+            }).ToList();
+
+            return result;
         }
 
         public async Task<Room> Update(int id, Room room)
@@ -59,9 +90,13 @@ namespace WebApplication1.Modles.Servicse
             return roomameneties;
         }
 
-        public Task<RoomAmenities> AddAmenityToRoom(int roomId, int amenityId)
+        public async Task<RoomAmenities> AddAmenityToRoom(int roomId, int amenityId)
         {
-            throw new NotImplementedException();
+            var roomameneties = await _context.RoomAmenities.Where(x => x.RoomId == roomId && x.Id == amenityId).FirstOrDefaultAsync();
+            _context.Entry(roomameneties).State = EntityState.Added;
+            await _context.SaveChangesAsync();
+
+            return roomameneties;
         }
     }
 }
